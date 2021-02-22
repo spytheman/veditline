@@ -15,13 +15,19 @@ file:line:column syntax.
 This program is built using the [V programming language](https://github.com/vlang/v).
 
 After you have V installed, just do:
-`v .`
+```sh
+git clone https://github.com/spytheman/vedit /opt/vedit
+cd /opt/vedit
+v .
+```
 
 ## Setup:
-`ln -s /path/to/vedit /usr/local/bin/vjed`
-`ln -s /path/to/vedit /usr/local/bin/vvim`
-`ln -s /path/to/vedit /usr/local/bin/vkate`
-`ln -s /path/to/vedit /usr/local/bin/vemacs`
+```sh
+sudo ln -s /opt/vedit/vedit /usr/local/bin/vjed
+sudo ln -s /opt/vedit/vedit /usr/local/bin/vvim
+sudo ln -s /opt/vedit/vedit /usr/local/bin/vkate
+sudo ln -s /opt/vedit/vedit /usr/local/bin/vemacs
+```
 
 ## Usage:
 
