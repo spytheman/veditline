@@ -19,4 +19,6 @@ jobs:
            pwd
            ls -lart .
     - name: Build veditline
-      run: pwd && v/v .
+      run: pwd && v/v -showcc .
+    - name: Test veditline --install
+      run: ./veditline --install vjed vemacs vvim vkate
