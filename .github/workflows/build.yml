@@ -12,6 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Clone and Build latest V
-      run: git clone https://github.com/vlang/v && cd v && make
+      run: |
+           git clone https://github.com/vlang/v 
+           cd v 
+           make
+           pwd
+           ls -lart .
     - name: Build veditline
-      run: v/v .
+      run: pwd && v/v .
