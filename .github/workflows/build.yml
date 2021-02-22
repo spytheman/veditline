@@ -1,0 +1,17 @@
+name: Build with Latest V
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Clone and Build latest V
+      run: git clone https://github.com/vlang/v && cd v && make
+    - name: Build veditline
+      run: v/v .
