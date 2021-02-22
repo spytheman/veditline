@@ -1,4 +1,4 @@
-# vedit
+# veditline
 A small CLI editor wrapper, that makes it easy to edit files, mentioned in error messages.
 
 Most text editors do support opening a text file at a specific line, but each editor has a 
@@ -8,7 +8,7 @@ Programming editors like vim and emacs especially, also understand the file:line
 internally, in order to be able to go to compilation errors, but their command line options
 for specifying the line number are different for seemingly no good reason.
 
-`vedit` is a small wrapper for other text editors, that intends to standardize on the 
+`veditline` is a small wrapper for other text editors, that intends to standardize on the 
 file:line:column syntax.
 
 ## Build:
@@ -16,17 +16,14 @@ This program is built using the [V programming language](https://github.com/vlan
 
 After you have V installed, just do:
 ```sh
-git clone https://github.com/spytheman/vedit /opt/vedit
-cd /opt/vedit
+git clone https://github.com/spytheman/veditline /opt/veditline
+cd /opt/veditline
 v .
 ```
 
 ## Setup:
 ```sh
-sudo ln -s /opt/vedit/vedit /usr/local/bin/vjed
-sudo ln -s /opt/vedit/vedit /usr/local/bin/vvim
-sudo ln -s /opt/vedit/vedit /usr/local/bin/vkate
-sudo ln -s /opt/vedit/vedit /usr/local/bin/vemacs
+sudo ./veditline --install vjed vemacs vvim
 ```
 
 ## Usage:

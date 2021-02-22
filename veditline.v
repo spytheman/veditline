@@ -6,6 +6,16 @@ fn main() {
 		eprintln('Usage: `v$final_editor_cmd FILE:LINE: ...`')
 		exit(1)
 	}
+	if '--install' in os.args {
+		aliases_names := os.args[1..].filter(!it.starts_with('-'))
+		exepath := os.executable()
+		for aname in aliases_names {
+			target := os.join_path('/usr/local/bin', aname)
+			os.system('sudo rm -f $target')
+			os.system('sudo ln -s $exepath $target')
+		}
+		return
+	}
 	mut res := []string{}
 	for x in os.args[1..] {
 		parts := x.split(':')
