@@ -1,7 +1,7 @@
 import os
 
 fn main() {
-	final_editor_cmd := os.args[0][1..]
+	mut final_editor_cmd := os.args[0][1..]
 	if os.args.len < 2 {
 		eprintln('Usage: `v$final_editor_cmd FILE:LINE: ...`')
 		exit(1)
@@ -28,6 +28,7 @@ fn main() {
 			}
 			else {
 				match final_editor_cmd {
+					'e' { res << ['+${parts[1]}', parts[0]] }
 					'emacs' { res << ['+${parts[1]}', parts[0]] }
 					'kate' { res << [parts[0], '--line', parts[1]] }
 					'jed' { res << [parts[0], '-g', parts[1]] }
@@ -36,6 +37,10 @@ fn main() {
 				}
 			}
 		}
+	}
+	if final_editor_cmd == 'e' {
+		final_editor_cmd = 'emacsclient'
+		res.insert(0, ['--socket-name=/run/user/1000/emacs/server', "-a=''", '-nw'])
 	}
 	os.execvp(final_editor_cmd, res) ?
 }
