@@ -3,7 +3,7 @@ import os
 fn main() {
 	mut final_editor_cmd := os.args[0][1..]
 	if os.args.len < 2 {
-		eprintln('Usage: `v$final_editor_cmd FILE:LINE: ...`')
+		eprintln('Usage: `v${final_editor_cmd} FILE:LINE: ...`')
 		exit(1)
 	}
 	if '--install' in os.args {
@@ -11,8 +11,8 @@ fn main() {
 		exepath := os.executable()
 		for aname in aliases_names {
 			target := os.join_path('/usr/local/bin', aname)
-			os.system('sudo rm -f $target')
-			os.system('sudo ln -s $exepath $target')
+			os.system('sudo rm -f ${target}')
+			os.system('sudo ln -s ${exepath} ${target}')
 		}
 		return
 	}
@@ -40,7 +40,7 @@ fn main() {
 	}
 	if final_editor_cmd == 'e' {
 		final_editor_cmd = 'emacsclient'
-		res.insert(0, ['--socket-name=/run/user/1000/emacs/server', "-a=''", '-nw'])
+		res.insert(0, ["-a=''", '-t', '-r'])
 	}
-	os.execvp(final_editor_cmd, res) ?
+	os.execvp(final_editor_cmd, res)!
 }
