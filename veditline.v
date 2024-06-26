@@ -33,6 +33,7 @@ fn main() {
 					'kate' { res << [parts[0], '--line', parts[1]] }
 					'jed' { res << [parts[0], '-g', parts[1]] }
 					'vim' { res << ['+${parts[1]}', parts[0]] }
+					'pico' { res << ['+${parts[1]}', parts[0]] }
 					else { res << parts[0] }
 				}
 			}
