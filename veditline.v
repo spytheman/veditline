@@ -34,6 +34,7 @@ fn main() {
 					'jed' { res << [parts[0], '-g', parts[1]] }
 					'vim' { res << ['+${parts[1]}', parts[0]] }
 					'pico' { res << ['+${parts[1]}', parts[0]] }
+					'nano' { res << ['+${parts[1]}', parts[0]] }
 					else { res << parts[0] }
 				}
 			}
