@@ -34,7 +34,7 @@ fn main() {
 					'e', 'emacs' { res << ['+${line}:${column}', file] }
 					'pico', 'nano' { res << ['+${line}:${column}', file] }
 					'kate' { res << [file, '--line', line, '--column', column] }
-					'jed' { res << [file, '-g', line] }
+					'jed' { res << [file, '-g', line, '-f', 'goto_column(${column})' ] }
 					'vim' { res << [file, '+normal ${line}G${column}|'] }
 					else { res << file }
 				}
