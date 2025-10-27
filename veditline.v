@@ -27,15 +27,16 @@ fn main() {
 				res << parts[0]
 			}
 			else {
+				file := parts[0]
+				line := parts[1] or { '1' }
+				column := (parts[2] or { '0' }.int() + 1).str()
 				match final_editor_cmd {
-					'e' { res << ['+${parts[1]}', parts[0]] }
-					'emacs' { res << ['+${parts[1]}', parts[0]] }
-					'kate' { res << [parts[0], '--line', parts[1]] }
-					'jed' { res << [parts[0], '-g', parts[1]] }
-					'vim' { res << ['+${parts[1]}', parts[0]] }
-					'pico' { res << ['+${parts[1]}', parts[0]] }
-					'nano' { res << ['+${parts[1]}', parts[0]] }
-					else { res << parts[0] }
+					'e', 'emacs' { res << ['+${line}:${column}', file] }
+					'pico', 'nano' { res << ['+${line}:${column}', file] }
+					'kate' { res << [file, '--line', line, '--column', column] }
+					'jed' { res << [file, '-g', line] }
+					'vim' { res << [file, '+normal ${line}G${column}|'] }
+					else { res << file }
 				}
 			}
 		}
